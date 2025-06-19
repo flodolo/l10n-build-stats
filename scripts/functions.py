@@ -95,6 +95,38 @@ def get_firefox_releases(repo_path):
         return []
 
 
+def get_fxios_releases(repo_path):
+    try:
+        print("Extracting tags from repository")
+        result = subprocess.run(
+            ["git", "-C", repo_path, "tag", "-l", "firefox-v*"],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+        )
+        if result.returncode != 0:
+            raise RuntimeError(f"Error running git tag: {result.stderr}")
+
+        # Filter output using regex
+        output = result.stdout
+        tag_re = re.compile(r"(firefox\-v([0-9]*.0$))")
+        filtered_lines = [line for line in output.splitlines() if tag_re.search(line)]
+
+        # Process the filtered lines to extract version
+        releases = {}
+        for line in filtered_lines:
+            match = tag_re.search(line)
+            if match:
+                tag_name = match.group(1)
+                version = match.group(2)
+                releases[version] = tag_name
+
+        return releases
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return []
+
+
 def get_stats_path():
     return os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, "stats"))
 

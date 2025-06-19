@@ -5,3 +5,7 @@ l10n_path="/path/to/l10n-git-monorepo/"
 # Path to clone of mozilla-firefox/firefox
 # https://github.com/mozilla-firefox/firefox
 mozilla_firefox_path="/path/to/mozilla-firefox-repo/"
+
+# Path to clone of mozilla-firefox/firefox
+# https://github.com/mozilla-mobile/firefox-ios
+mozilla_firefox_path="/path/to/firefox-ios-repo/"
