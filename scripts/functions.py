@@ -110,8 +110,8 @@ def update_git_repository(changeset, repo_path):
         )
         if result.returncode != 0:
             raise RuntimeError(
-                f"Error git updating repository to {changeset}: {result.stderr}"
+                f"Error updating git repository to {changeset}: {result.stderr}"
             )
     except Exception as e:
-        print(f"An error occurred: {e}")
+        sys.exit(f"An error occurred: {e}")
         return []
