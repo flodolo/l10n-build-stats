@@ -12,18 +12,19 @@ python fenix_stats.py --path path_to_mozilla_firefox_clone
 
 from __future__ import annotations
 
+import argparse
+import os
+import sys
+import xml.etree.ElementTree as ET
+
 from functions import (
+    StringList,
     get_firefox_releases,
     read_config,
     store_completion,
     update_git_repository,
-    StringList,
 )
 from moz.l10n.paths import L10nConfigPaths, get_android_locale
-import xml.etree.ElementTree as ET
-import argparse
-import os
-import sys
 
 
 def parse_XML_file(

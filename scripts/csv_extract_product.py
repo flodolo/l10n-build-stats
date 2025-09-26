@@ -11,13 +11,15 @@ python extract_product.py --path path_to_mozilla_firefox_clone
 """
 
 from __future__ import annotations
-from typing import TypedDict
 
-from functions import get_json_files, get_stats_path, get_version_from_filename
 import argparse
 import csv
 import json
 import os
+
+from typing import TypedDict
+
+from functions import get_json_files, get_stats_path, get_version_from_filename
 
 
 class BuildEntry(TypedDict):

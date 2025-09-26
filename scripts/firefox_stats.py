@@ -12,21 +12,22 @@ python firefox_stats.py --path path_to_mozilla_firefox_clone
 
 from __future__ import annotations
 
+import argparse
+import json
+import os
+import sys
+
 from functions import (
+    StringList,
     get_firefox_releases,
     read_config,
     store_completion,
     update_git_repository,
-    StringList,
 )
 from moz.l10n.formats import UnsupportedFormat
 from moz.l10n.model import Entry
 from moz.l10n.paths import L10nConfigPaths
 from moz.l10n.resource import parse_resource
-import argparse
-import json
-import os
-import sys
 
 
 def parse_file(

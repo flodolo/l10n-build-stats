@@ -3,11 +3,13 @@ import os
 import re
 import subprocess
 import sys
+
 from typing import (
     Match,
     Optional,
     Pattern,
 )
+
 
 StringList = dict[str, dict[str, list[str]]]
 

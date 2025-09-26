@@ -6,14 +6,16 @@ resize/update a named range (same name as the sheet) to cover the full data.
 """
 
 from __future__ import annotations
-from gspread.utils import ValueInputOption
+
+import configparser
+import csv
+import os
+
 from typing import Any, Mapping, Optional, TypedDict
 
-import csv
-import configparser
-
 import gspread
-import os
+
+from gspread.utils import ValueInputOption
 
 
 class ServiceAccountDict(TypedDict):

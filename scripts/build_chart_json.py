@@ -9,14 +9,17 @@ Build JSON file for charting completion statistics over time
 """
 
 from __future__ import annotations
-from typing import Any, Dict, TypedDict
 
-from functions import get_json_files, get_stats_path, get_version_from_filename
 import argparse
 import json
 import os
-import requests
 import sys
+
+from typing import Any, Dict, TypedDict
+
+import requests
+
+from functions import get_json_files, get_stats_path, get_version_from_filename
 
 
 class LocaleRecord(TypedDict, total=False):
