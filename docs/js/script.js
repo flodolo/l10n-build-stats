@@ -129,7 +129,7 @@ async function render(db, locale, locale_name) {
         };
     });
 
-    const numFmt = new Intl.NumberFormat(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 2 });
+    const numFmt = new Intl.NumberFormat(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     const data = { labels, datasets };
     const options = {
         responsive: true,
@@ -140,7 +140,7 @@ async function render(db, locale, locale_name) {
             tooltip: {
                 callbacks: {
                     label: (ctx) =>
-                        `${ctx.dataset.label}: ${ctx.parsed.y != null ? ctx.parsed.y.toFixed(1) : '—'}%`,
+                        `${ctx.dataset.label}: ${ctx.parsed.y != null ? ctx.parsed.y.toFixed(2) : '—'}%`,
                 },
             },
         },
