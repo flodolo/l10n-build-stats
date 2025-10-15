@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Moved permanently</title>
+
+    <!-- Fallback for JS-disabled -->
+    <meta http-equiv="refresh" content="0; url=https://mozilla-l10n.github.io/l10n-build-stats/" />
+
+    <meta name="robots" content="noindex">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="canonical" href="https://mozilla-l10n.github.io/l10n-build-stats/">
+    <style>
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            padding: 2rem;
+        }
+
+        .box {
+            max-width: 42rem;
+            margin: 15vh auto 0;
+        }
+
+        .muted {
+            color: #666;
+            font-size: .9rem;
+        }
+
+        code {
+            background: #f6f8fa;
+            padding: .15rem .3rem;
+            border-radius: .3rem;
+        }
+    </style>
+    <script>
+        (function () {
+            // ---- CONFIG ----
+            const NEW_BASE = "https://mozilla-l10n.github.io/l10n-build-stats/"; // keep trailing slash
+            const OLD_REPO = "l10n-build-stats"; // <-- project repo name, not username
+            // ----------------
+
+            // Current path, e.g. /l10n-build-stats/, /l10n-build-stats/reports/42
+            let path = window.location.pathname || "/";
+            const prefix = "/" + OLD_REPO;
+
+            // Strip "/OLD_REPO" prefix that GitHub Pages uses for project sites
+            if (path === prefix) {
+                path = "";                     // repo root
+            } else if (path.startsWith(prefix + "/")) {
+                path = path.slice(prefix.length + 1); // drop "/OLD_REPO/"
+            } else if (path === "/") {
+                path = "";
+            }
+
+            // Preserve query and hash
+            const query = window.location.search || "";
+            const hash = window.location.hash || "";
+
+            // Let URL normalize any slashes
+            const dest = new URL(path + query + hash, NEW_BASE).toString();
+
+            // Don’t keep old URL in history
+            window.location.replace(dest);
+        })();
+    </script>
+</head>
+
+<body>
+    <div class="box">
+        <h1>Moved permanently</h1>
+        <p>This page has moved to the mozilla-l10n organization’s site. If you aren’t redirected automatically, use the link below.</p>
+        <p><a id="fallbackLink" href="https://mozilla-l10n.github.io/l10n-build-stats/">Continue to the new site</a></p>
+        <p class="muted">Tip: update any bookmarks and CI links to the new URL.</p>
+    </div>
+    <script>
+        (function () {
+            const NEW_BASE = "https://mozilla-l10n.github.io/l10n-build-stats/";
+            document.getElementById("fallbackLink").href = NEW_BASE;
+        })();
+    </script>
+</body>
+
+</html>
